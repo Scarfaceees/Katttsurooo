@@ -1,0 +1,136 @@
+/* =====================================================================
+   GRAFICKÝ UPGRADE – vrstva nad base.css
+   Zůstává v pravidlech design systému: žádná emoji jako grafika, žádné lesklé přechody,
+   zlato jen jako akcent, rumělka pro hlavní akci. Hloubku dělá papírové zrno,
+   jemné linky a měkké stíny, ne záře.
+   ===================================================================== */
+
+/* ---- barvy a stíny (tokeny) ---- */
+:root{
+  --ink0:#09090b;--ink1:#111115;--ink2:#17171d;--ink3:#202028;
+  --line:#2a2a32;--line2:#3a3942;
+  --washi:#f2ecde;--mut:#a29d8f;--dim:#6c6860;
+  --shu:#c33d2c;--shu2:#e0573f;--shud:#7d2b21;
+  --kin:#d4b77b;--kind:#8b7748;
+  --lift:0 1px 0 rgba(255,255,255,.04) inset,0 18px 40px -18px rgba(0,0,0,.9);
+  --ring:0 0 0 1px rgba(212,183,123,.4),0 0 0 4px rgba(212,183,123,.12);
+}
+
+/* ---- pozadí: tmavý inkoust, rumělková záře, jemné papírové zrno ---- */
+body{position:relative;background-color:var(--ink0);
+  background-image:radial-gradient(1100px 620px at 85% -15%,rgba(195,61,44,.14),transparent 60%),
+    radial-gradient(800px 480px at -8% 110%,rgba(212,183,123,.07),transparent 60%),
+    linear-gradient(180deg,#0d0d10,#08080a 70%);
+  background-repeat:no-repeat;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .92 0 0 0 0 .85 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#app{position:relative;z-index:1}
+h1,h2,h3,h4{letter-spacing:.005em}
+p{text-wrap:pretty}
+::selection{background:var(--shu);color:#fff8ee}
+
+/* ---- postranní panel ---- */
+.side{background:linear-gradient(180deg,rgba(23,23,29,.94),rgba(13,13,17,.94));box-shadow:var(--lift);backdrop-filter:blur(10px)}
+.brand{padding-bottom:18px}
+.brand .hanko{box-shadow:0 10px 22px -8px rgba(195,61,44,.6),inset 0 0 0 2px rgba(0,0,0,.2),inset 0 0 0 3px rgba(255,255,255,.14)}
+.brand b{font-size:1.14rem}
+.mi{letter-spacing:.01em}
+.mi:hover .mk{color:var(--kin)}
+.mi.on{background:rgba(195,61,44,.1)}
+.seg{background:var(--ink0);box-shadow:inset 0 1px 3px rgba(0,0,0,.5)}
+.seg button.on{box-shadow:0 1px 0 rgba(255,255,255,.05) inset}
+
+/* ---- tlačítka: plochá, ale s vyzvednutím a jemným žárem ---- */
+.btn{letter-spacing:.02em;box-shadow:0 1px 0 rgba(255,255,255,.14) inset,0 10px 22px -12px rgba(195,61,44,.75);transition:background .15s,border-color .15s,transform .1s,box-shadow .2s}
+.btn:hover:not(:disabled){box-shadow:0 1px 0 rgba(255,255,255,.16) inset,0 12px 26px -12px rgba(224,87,63,.85)}
+.btn.alt{box-shadow:none}
+.btn.alt:hover:not(:disabled){border-color:var(--kind);color:var(--kin);background:var(--ink2)}
+.btn:disabled{box-shadow:none}
+.x{transition:background .15s,color .15s}
+
+/* ---- banner stránky: větší nadpis, viditelné kandži v pozadí ---- */
+.pb{border-color:var(--line2);box-shadow:var(--lift)}
+.pb::after{background:linear-gradient(90deg,rgba(9,9,11,.94) 0,rgba(9,9,11,.6) 50%,rgba(9,9,11,.14)),linear-gradient(0deg,rgba(9,9,11,.7),transparent 42%)}
+.pb-mark{display:block;color:var(--washi);opacity:.045}
+.pb-t{text-shadow:0 2px 24px rgba(0,0,0,.6)}
+.pb-s{letter-spacing:.03em}
+.pb-x{color:#d6cfbf}
+.pb .hanko{box-shadow:0 12px 26px -10px rgba(195,61,44,.7),inset 0 0 0 2px rgba(0,0,0,.2),inset 0 0 0 3px rgba(255,255,255,.14)}
+@media(min-width:981px){
+  .pb-in{padding:40px 40px 36px;align-items:center}
+  .pb-t{font-size:clamp(2rem,3.4vw,2.7rem)}
+  .pb-s{font-size:1.04rem}
+  .pb .hanko{width:64px;height:64px;font-size:2.3rem}
+}
+
+/* ---- nadpisy sekcí a seznamy ---- */
+.sh{margin:36px 0 14px}
+.sh h2{font-size:1.2rem}
+.sh::after{background:linear-gradient(90deg,var(--line2),transparent)}
+.sn{font-size:.8rem;letter-spacing:.02em}
+.list,.log,.ledger,.panel{box-shadow:var(--lift)}
+.list{background:linear-gradient(180deg,var(--ink1),#0e0e12)}
+.lrow{position:relative;transition:background .18s}
+.lrow::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:2px;border-radius:2px;background:transparent;transition:background .18s}
+.lrow:hover::before{background:var(--kin)}
+.lrow.locked::before{display:none}
+.seal{background:linear-gradient(160deg,#1c1c23,#0c0c0f);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.rmain b{font-size:1.06rem;letter-spacing:.005em}
+.log{background:linear-gradient(180deg,var(--ink1),#0e0e12)}
+.log::before{letter-spacing:.04em}
+.lg .v{letter-spacing:.01em}
+
+/* ---- mřížka předmětů: rámeček podle vzácnosti ---- */
+.cell{border-radius:12px;background:radial-gradient(circle at 50% 35%,#1d1d24,#0c0c0f 72%)}
+.cell:not(.empty){box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--rc) 18%,transparent)}
+.cell:not(.empty):hover{box-shadow:inset 0 0 0 1px var(--rc),0 12px 26px -14px var(--rc)}
+.cell.empty{background:repeating-linear-gradient(135deg,transparent 0 9px,rgba(255,255,255,.012) 9px 10px)}
+
+/* ---- karty postav a vybavení ---- */
+.cc{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--ink2),var(--ink1));box-shadow:var(--lift)}
+.cc::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--shu);transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.cc:hover{border-color:var(--kin)}
+.cc:hover::before{transform:scaleX(1)}
+.cc .hanko{box-shadow:0 12px 26px -10px rgba(195,61,44,.7),inset 0 0 0 2px rgba(0,0,0,.2),inset 0 0 0 3px rgba(255,255,255,.14)}
+.rc,.frc,.ach,.skn,.chap{box-shadow:var(--lift)}
+.rc:hover{border-color:var(--kind)}
+
+/* ---- úvodní obrazovka: krajina z banneru, lístky, velký nadpis ---- */
+.hero{max-width:1080px;margin:0 auto;padding:12px 0 40px}
+.hero-wrap{position:relative;isolation:isolate;overflow:hidden;border:1px solid var(--line2);border-radius:26px;
+  background:var(--ink1);box-shadow:0 40px 90px -40px #000,inset 0 0 0 1px rgba(255,255,255,.02);padding:72px 32px 56px}
+.hero-bg{position:absolute;inset:0;z-index:-1}
+.hero-bg .pb-art{width:100%;height:100%}
+.hero-wrap::after{content:"";position:absolute;inset:0;z-index:0;
+  background:linear-gradient(180deg,rgba(9,9,11,.2) 0,rgba(9,9,11,.5) 42%,rgba(9,9,11,.94) 100%)}
+.petals{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.hero-in{position:relative;z-index:2;text-align:center}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);letter-spacing:.06em;text-shadow:0 2px 34px rgba(195,61,44,.4)}
+.hero .sub{font-size:1.05rem;letter-spacing:.6em;margin:12px 0 38px;color:var(--kin)}
+.namebox{max-width:420px}
+.namebox input{text-align:center;font-size:1.05rem;padding:14px 16px;background:rgba(9,9,11,.72);backdrop-filter:blur(6px)}
+.cgrid{gap:16px}
+.cc{background:rgba(17,17,21,.8);backdrop-filter:blur(8px)}
+.impbox summary{letter-spacing:.02em}
+@media(max-width:700px){.hero-wrap{padding:52px 18px 36px;border-radius:20px}}
+
+/* ---- souboj: ztmavená arena s vinětou ---- */
+.arenabox{background:linear-gradient(180deg,#16161c,#0e0e12);box-shadow:0 40px 100px -30px #000}
+.field{box-shadow:inset 0 0 120px rgba(0,0,0,.6),inset 0 -40px 60px -30px rgba(0,0,0,.6);border-color:var(--line2)}
+.rcount{text-transform:uppercase;letter-spacing:.14em;font-size:.76rem}
+.hbar{height:20px;border-radius:10px;box-shadow:inset 0 1px 3px rgba(0,0,0,.6)}
+.hbar i:not(.gh){box-shadow:inset 0 -2px 0 rgba(0,0,0,.25)}
+.rtab td{background:var(--ink0)}
+
+/* ---- okna a oznámení ---- */
+.mback{background:rgba(4,4,6,.8)}
+.mcard{background:linear-gradient(180deg,#17171d,#101014);box-shadow:0 40px 90px #000,inset 0 1px 0 rgba(255,255,255,.04)}
+.toast{background:rgba(23,23,29,.94);backdrop-filter:blur(8px)}
+
+/* ---- mobil: úpravy, které nesmí přebít původní responzivitu ---- */
+@media(max-width:980px){
+  .pb-in{padding:18px}
+}
+@media(max-width:700px){
+  .pb-mark{font-size:7rem;opacity:.04}
+}
