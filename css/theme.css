@@ -1,46 +1,44 @@
 /* =====================================================================
    NOVÝ VIZUÁL – vrstva nad base.css
-   Směr: noční chrám. Hluboký indigo inkoust, vermilion (shu) pro hlavní akci,
-   tlumené zlato (kin) pro akcenty, teplý washi text. Panely s odříznutými rohy,
-   jemné zlaté linky, seigaiha vlny v pozadí. Žádná emoji jako grafika.
+   Směr: temná kovaná fantasy. Kamenné a kožené panely, bronzové dvojité rámy,
+   červená tlačítka s bronzovým okrajem, tmavé sloty předmětů a pergamenový text.
+   Paleta podle referenčního UI kitu: rezavě červená, bronz, hnědošedá.
+   Žádná emoji jako grafika.
    ===================================================================== */
 
 :root{
-  --ink0:#0a0a12;--ink1:#11121c;--ink2:#181a27;--ink3:#222536;
-  --line:#262a3b;--line2:#363b52;
-  --washi:#f1ead9;--mut:#a4a2b0;--dim:#6e6c7c;
-  --shu:#c63f2d;--shu2:#e35a42;--shud:#7a2519;
-  --kin:#d9b66c;--kind:#8f7a48;
-  --lift:0 1px 0 rgba(255,255,255,.04) inset,0 24px 48px -24px rgba(0,0,0,.9);
-  --ring:0 0 0 1px rgba(217,182,108,.45),0 0 0 4px rgba(217,182,108,.12);
-  /* odříznutý roh panelů */
-  --cut:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);
-  --cut-s:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);
-  /* seigaiha: vzor vln ve třech odstínech pozadí */
-  --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='28'%3E%3Cg fill='none' stroke='%23d9b66c' stroke-opacity='.05' stroke-width='1'%3E%3Ccircle cx='0' cy='28' r='14'/%3E%3Ccircle cx='0' cy='28' r='7'/%3E%3Ccircle cx='28' cy='28' r='14'/%3E%3Ccircle cx='28' cy='28' r='7'/%3E%3Ccircle cx='56' cy='28' r='14'/%3E%3Ccircle cx='56' cy='28' r='7'/%3E%3Ccircle cx='14' cy='0' r='14'/%3E%3Ccircle cx='14' cy='0' r='7'/%3E%3Ccircle cx='42' cy='0' r='14'/%3E%3Ccircle cx='42' cy='0' r='7'/%3E%3C/g%3E%3C/svg%3E");
+  --ink0:#121010;--ink1:#1b1815;--ink2:#24201b;--ink3:#2f2a23;
+  --line:#3b3428;--line2:#5b4d34;
+  --washi:#e9dfc8;--mut:#a79c86;--dim:#776d5b;
+  --shu:#a52a1c;--shu2:#d1412b;--shud:#5a1710;
+  --kin:#caa45a;--kind:#7d6036;
+  --ai:#7fa3c4;--ok:#9bbf7e;--bad:#e0705d;
+  --lift:inset 0 1px 0 rgba(255,236,190,.06),0 22px 44px -22px rgba(0,0,0,.92);
+  --ring:0 0 0 1px rgba(202,164,90,.5),0 0 0 4px rgba(202,164,90,.12);
+  /* dvojitý bronzový rám: vnitřní tmavá linka, vnější zlatý okraj */
+  --frame:inset 0 0 0 3px var(--ink0),inset 0 0 0 4px var(--kind),inset 0 0 0 5px rgba(202,164,90,.18);
 }
 
-/* ---- pozadí: noční obloha, vlny, jemné zrno ---- */
+/* ---- pozadí: tmavý kámen s jemným zrnem a vinětou ---- */
 body{position:relative;background-color:var(--ink0);
-  background-image:radial-gradient(1200px 640px at 80% -18%,rgba(198,63,45,.16),transparent 60%),
-    radial-gradient(900px 500px at -10% 110%,rgba(217,182,108,.08),transparent 60%),
-    linear-gradient(180deg,#0e0f18,#07070d 75%);
+  background-image:radial-gradient(1100px 600px at 50% -20%,rgba(165,42,28,.14),transparent 60%),
+    radial-gradient(900px 500px at 50% 120%,rgba(202,164,90,.06),transparent 60%),
+    linear-gradient(180deg,#1a1714,#0d0b0a 80%);
   background-repeat:no-repeat;background-attachment:fixed}
-body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:var(--wave);opacity:.9}
-body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.45;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .92 0 0 0 0 .85 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .9 0 0 0 0 .8 0 0 0 0 .6 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 #app{position:relative;z-index:1}
-h1,h2,h3,h4{letter-spacing:.01em}
+h1,h2,h3,h4{letter-spacing:.02em}
 p{text-wrap:pretty}
-::selection{background:var(--shu);color:#fff8ee}
+::selection{background:var(--shu);color:#fff3e4}
 
 /* ---- logo a znaky ---- */
-.logo{width:40px;height:40px;flex:none;filter:drop-shadow(0 4px 10px rgba(198,63,45,.35))}
+.logo{width:40px;height:40px;flex:none;filter:drop-shadow(0 4px 10px rgba(165,42,28,.45))}
 .logo .lg-petals path{fill:var(--shu2);opacity:.95}
 .logo .lg-blade{stroke:var(--kin);stroke-width:2.6;stroke-linecap:round;fill:none}
 .logo .lg-core{fill:var(--ink0);stroke:var(--kin);stroke-width:1.2}
 .crest{width:64px;height:64px;flex:none;filter:drop-shadow(0 6px 14px rgba(0,0,0,.6))}
-.crest .cr-ring{fill:rgba(17,18,28,.9);stroke:var(--kind);stroke-width:1.4}
+.crest .cr-ring{fill:#1d1914;stroke:var(--kin);stroke-width:1.6}
 .crest .cr-blade{stroke:var(--washi);stroke-width:2.2;stroke-linecap:round;fill:none}
 .crest .cr-grip{stroke:var(--shu2);stroke-width:4;stroke-linecap:round}
 .crest .cr-guard{fill:var(--kin)}
@@ -55,68 +53,68 @@ p{text-wrap:pretty}
 .orn-line{stroke:var(--kind);stroke-width:1;fill:none}
 .orn-petal path{fill:var(--kin)}
 
-/* ---- postranní panel: pevný sloupec s odříznutým okrajem ---- */
-.side{background:linear-gradient(180deg,rgba(24,26,39,.96),rgba(12,13,21,.96));box-shadow:var(--lift);backdrop-filter:blur(12px);border-right:1px solid var(--line)}
+/* ---- postranní panel: kamenná deska s bronzovým rámem ---- */
+.side{background:linear-gradient(180deg,#2a251e,#17140f);box-shadow:var(--lift),var(--frame);border-right:1px solid var(--line2)}
 .brand{padding-bottom:18px;display:flex;align-items:center;gap:12px}
-.brand b{font-family:var(--serif);font-size:1.15rem;letter-spacing:.02em}
+.brand b{font-family:var(--serif);font-size:1.15rem;letter-spacing:.03em}
 .brand span{color:var(--kin)}
 .brand .hanko{display:none}
-.mi{letter-spacing:.01em;transition:background .18s,color .18s}
+.mi{letter-spacing:.02em;transition:background .18s,color .18s}
 .mi:hover .mk{color:var(--kin)}
-.mi.on{background:linear-gradient(90deg,rgba(198,63,45,.18),transparent 85%);box-shadow:inset 2px 0 0 var(--shu2)}
-.seg{background:var(--ink0);box-shadow:inset 0 1px 3px rgba(0,0,0,.5);clip-path:var(--cut-s)}
-.seg button.on{box-shadow:0 1px 0 rgba(255,255,255,.05) inset;background:var(--ink3)}
+.mi.on{background:linear-gradient(90deg,rgba(165,42,28,.28),transparent 85%);box-shadow:inset 3px 0 0 var(--shu2)}
+.seg{background:#0c0a09;box-shadow:inset 0 1px 4px rgba(0,0,0,.6);border:1px solid var(--line);border-radius:6px}
+.seg button.on{background:var(--ink3);box-shadow:inset 0 1px 0 rgba(255,236,190,.06)}
 
-/* ---- tlačítka: vermilion s odříznutým rohem, zlatý okraj při najetí ---- */
-.btn{letter-spacing:.04em;text-transform:none;border:0;border-radius:0;padding:10px 22px;
-  background:linear-gradient(180deg,var(--shu2),var(--shu));color:#fff8ee;clip-path:var(--cut-s);
-  box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 12px 24px -14px rgba(198,63,45,.85);
-  transition:background .15s,transform .1s,box-shadow .2s,color .15s}
-.btn:hover:not(:disabled){background:linear-gradient(180deg,#f06e54,var(--shu2));box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 0 0 1px var(--kin),0 14px 28px -14px rgba(224,87,63,.9)}
-.btn.alt{background:transparent;color:var(--washi);clip-path:none;border:1px solid var(--line2);box-shadow:none}
-.btn.alt:hover:not(:disabled){background:var(--ink3);color:var(--kin);border-color:var(--kind);box-shadow:none}
+/* ---- tlačítka: červená s bronzovým okrajem a vyvýšeným horním okrajem ---- */
+.btn{letter-spacing:.06em;text-transform:uppercase;font-size:.8rem;font-weight:700;border:1px solid var(--kind);border-radius:5px;padding:10px 22px;
+  background:linear-gradient(180deg,var(--shu2) 0,var(--shu) 52%,var(--shud) 100%);color:#f8e9d2;
+  box-shadow:inset 0 1px 0 rgba(255,220,180,.28),inset 0 -2px 0 rgba(0,0,0,.35),0 10px 20px -12px rgba(0,0,0,.9);
+  transition:background .15s,transform .1s,box-shadow .2s,color .15s,border-color .15s}
+.btn:hover:not(:disabled){border-color:var(--kin);box-shadow:inset 0 1px 0 rgba(255,220,180,.35),inset 0 -2px 0 rgba(0,0,0,.35),0 0 0 2px rgba(202,164,90,.2),0 12px 24px -12px rgba(0,0,0,.9)}
+.btn:active:not(:disabled){transform:translateY(1px)}
+.btn.alt{background:linear-gradient(180deg,#2c281f,#1a1712);color:var(--washi);border-color:var(--line2);box-shadow:inset 0 1px 0 rgba(255,236,190,.05),0 6px 14px -10px #000}
+.btn.alt:hover:not(:disabled){background:linear-gradient(180deg,#3a3429,#211e18);color:var(--kin);border-color:var(--kin);box-shadow:inset 0 1px 0 rgba(255,236,190,.08)}
 .btn:disabled{box-shadow:none}
 .x{transition:background .15s,color .15s}
 
-/* ---- banner stránky ---- */
-.pb{border:1px solid var(--line2);box-shadow:var(--lift);border-radius:18px;overflow:hidden}
-.pb::after{background:linear-gradient(90deg,rgba(10,10,18,.94) 0,rgba(10,10,18,.6) 50%,rgba(10,10,18,.12)),linear-gradient(0deg,rgba(10,10,18,.75),transparent 46%)}
+/* ---- banner stránky: kamenný rám s bronzovou linkou ---- */
+.pb{border:1px solid var(--line2);box-shadow:var(--lift),var(--frame);border-radius:10px;overflow:hidden}
+.pb::after{background:linear-gradient(90deg,rgba(18,16,16,.94) 0,rgba(18,16,16,.6) 50%,rgba(18,16,16,.12)),linear-gradient(0deg,rgba(18,16,16,.8),transparent 46%)}
 .pb-mark{display:block;color:var(--washi);opacity:.05}
-.pb-t{text-shadow:0 2px 26px rgba(0,0,0,.6)}
-.pb-s{letter-spacing:.04em;color:var(--kin)}
-.pb-x{color:#d9d4c6}
-.pb .hanko{box-shadow:0 12px 26px -10px rgba(198,63,45,.7),inset 0 0 0 1px rgba(217,182,108,.35)}
+.pb-t{text-shadow:0 2px 22px rgba(0,0,0,.7)}
+.pb-s{letter-spacing:.05em;color:var(--kin);text-transform:uppercase;font-size:.9rem}
+.pb-x{color:#d9cfb8}
+.pb .hanko{box-shadow:0 12px 26px -10px rgba(165,42,28,.7),inset 0 0 0 1px rgba(202,164,90,.45)}
 @media(min-width:981px){
   .pb-in{padding:40px 40px 36px;align-items:center}
   .pb-t{font-size:clamp(2rem,3.4vw,2.8rem)}
-  .pb-s{font-size:1.04rem}
 }
 
 /* ---- nadpisy sekcí a seznamy ---- */
 .sh{margin:38px 0 16px}
 .sh h2{font-size:1.2rem}
 .sh::after{background:linear-gradient(90deg,var(--kind),transparent)}
-.sn{font-size:.8rem;letter-spacing:.03em;color:var(--mut)}
+.sn{font-size:.8rem;letter-spacing:.02em;color:var(--mut)}
 .list,.log,.ledger,.panel{box-shadow:var(--lift)}
-.list{background:linear-gradient(180deg,var(--ink1),#0d0e16);clip-path:var(--cut)}
+.list{background:linear-gradient(180deg,#221e18,#15120e);border:1px solid var(--line2);border-radius:8px;box-shadow:var(--lift),var(--frame)}
 .lrow{position:relative;transition:background .18s}
 .lrow::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:2px;border-radius:2px;background:transparent;transition:background .18s}
 .lrow:hover::before{background:var(--kin)}
 .lrow.locked::before{display:none}
-.seal{background:linear-gradient(160deg,#1d2030,#0b0c14);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.seal{background:linear-gradient(160deg,#2a251d,#120f0c);box-shadow:inset 0 1px 0 rgba(255,236,190,.05),inset 0 0 0 1px var(--line)}
 .rmain b{font-size:1.06rem;letter-spacing:.01em}
-.log{background:linear-gradient(180deg,var(--ink1),#0d0e16);clip-path:var(--cut-s)}
-.log::before{letter-spacing:.05em}
+.log{background:linear-gradient(180deg,#211d17,#14110d);border:1px solid var(--line2);border-radius:8px}
+.log::before{letter-spacing:.04em}
 .lg .v{letter-spacing:.01em}
 
-/* ---- mřížka předmětů: rámeček podle vzácnosti ---- */
-.cell{border-radius:6px;background:radial-gradient(circle at 50% 35%,#20233a,#0c0d15 72%)}
-.cell:not(.empty){box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--rc) 22%,transparent)}
-.cell:not(.empty):hover{box-shadow:inset 0 0 0 1px var(--rc),0 12px 26px -14px var(--rc)}
-.cell.empty{background:repeating-linear-gradient(135deg,transparent 0 9px,rgba(255,255,255,.014) 9px 10px)}
+/* ---- sloty předmětů: tmavé zaoblené políčko s vnitřním stínem ---- */
+.cell{border-radius:8px;background:radial-gradient(circle at 50% 30%,#2a251d,#0e0c0a 75%);border:1px solid #14110d;box-shadow:inset 0 2px 6px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,236,190,.03)}
+.cell:not(.empty){box-shadow:inset 0 2px 6px rgba(0,0,0,.7),inset 0 0 0 1px color-mix(in srgb,var(--rc) 45%,transparent)}
+.cell:not(.empty):hover{box-shadow:inset 0 0 0 1px var(--rc),0 0 16px -4px var(--rc)}
+.cell.empty{background:#120f0c;box-shadow:inset 0 2px 8px rgba(0,0,0,.8)}
 
-/* ---- karty postav a vybavení: odříznuté rohy, zlatý horní pruh ---- */
-.cc{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(24,26,39,.92),rgba(14,15,24,.92));box-shadow:var(--lift);clip-path:var(--cut);backdrop-filter:blur(8px)}
+/* ---- karty postav a vybavení: kamenný panel s bronzovým rámem ---- */
+.cc{position:relative;overflow:hidden;background:linear-gradient(180deg,#282219,#15120e);border:1px solid var(--line2);border-radius:10px;box-shadow:var(--lift),var(--frame);backdrop-filter:blur(4px)}
 .cc::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,var(--shu2),var(--kin));transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
 .cc:hover{border-color:var(--kin)}
 .cc:hover::before{transform:scaleX(1)}
@@ -126,35 +124,35 @@ p{text-wrap:pretty}
 
 /* ---- úvodní obrazovka ---- */
 .hero{max-width:1080px;margin:0 auto;padding:12px 0 44px}
-.hero-wrap{position:relative;isolation:isolate;overflow:hidden;border:1px solid var(--line2);border-radius:26px;
-  background:var(--ink1);box-shadow:0 40px 90px -40px #000,inset 0 0 0 1px rgba(255,255,255,.02);padding:76px 32px 60px}
+.hero-wrap{position:relative;isolation:isolate;overflow:hidden;border:1px solid var(--line2);border-radius:14px;
+  background:var(--ink1);box-shadow:0 40px 90px -40px #000,var(--frame);padding:76px 32px 60px}
 .hero-bg{position:absolute;inset:0;z-index:-1}
 .hero-bg .pb-art{width:100%;height:100%}
 .hero-wrap::after{content:"";position:absolute;inset:0;z-index:0;
-  background:linear-gradient(180deg,rgba(10,10,18,.15) 0,rgba(10,10,18,.5) 42%,rgba(10,10,18,.95) 100%)}
+  background:linear-gradient(180deg,rgba(18,16,16,.15) 0,rgba(18,16,16,.5) 42%,rgba(18,16,16,.95) 100%)}
 .petals{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
 .hero-in{position:relative;z-index:2;text-align:center}
-.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);letter-spacing:.06em;text-shadow:0 2px 34px rgba(198,63,45,.45)}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);letter-spacing:.06em;text-shadow:0 2px 30px rgba(165,42,28,.5)}
 .hero .sub{font-size:1.05rem;letter-spacing:.6em;margin:12px 0 38px;color:var(--kin)}
 .namebox{max-width:420px}
-.namebox input{text-align:center;font-size:1.05rem;padding:14px 16px;background:rgba(10,10,18,.75);backdrop-filter:blur(6px)}
+.namebox input{text-align:center;font-size:1.05rem;padding:14px 16px;background:rgba(12,10,9,.8);border-color:var(--line2);backdrop-filter:blur(6px)}
 .cgrid{gap:18px}
-.cc{background:rgba(17,18,28,.82);padding:26px 22px 22px}
+.cc{background:rgba(26,22,18,.9);padding:26px 22px 22px}
 .impbox summary{letter-spacing:.02em}
-@media(max-width:700px){.hero-wrap{padding:52px 18px 36px;border-radius:20px}}
+@media(max-width:700px){.hero-wrap{padding:52px 18px 36px;border-radius:12px}}
 
-/* ---- souboj: ztmavená arena s vinětou ---- */
-.arenabox{background:linear-gradient(180deg,#171a28,#0c0d15);box-shadow:0 40px 100px -30px #000;clip-path:var(--cut)}
-.field{box-shadow:inset 0 0 120px rgba(0,0,0,.65),inset 0 -40px 60px -30px rgba(0,0,0,.6);border-color:var(--line2)}
-.rcount{text-transform:uppercase;letter-spacing:.16em;font-size:.76rem;color:var(--kin)}
-.hbar{height:20px;border-radius:0;clip-path:var(--cut-s);box-shadow:inset 0 1px 3px rgba(0,0,0,.6)}
+/* ---- souboj: tmavá arena s bronzovým rámem ---- */
+.arenabox{background:linear-gradient(180deg,#221e18,#100e0c);box-shadow:0 40px 100px -30px #000,var(--frame);border:1px solid var(--line2);border-radius:10px}
+.field{box-shadow:inset 0 0 120px rgba(0,0,0,.7),inset 0 -40px 60px -30px rgba(0,0,0,.6);border-color:var(--line2)}
+.rcount{text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;color:var(--kin)}
+.hbar{height:20px;border-radius:3px;box-shadow:inset 0 2px 4px rgba(0,0,0,.75),inset 0 0 0 1px #000}
 .hbar i:not(.gh){box-shadow:inset 0 -2px 0 rgba(0,0,0,.25)}
 .rtab td{background:var(--ink0)}
 
-/* ---- okna a oznámení ---- */
-.mback{background:rgba(5,5,10,.82)}
-.mcard{background:linear-gradient(180deg,#191c2b,#0f1019);box-shadow:0 40px 90px #000,inset 0 1px 0 rgba(255,255,255,.04);clip-path:var(--cut)}
-.toast{background:rgba(24,26,39,.95);backdrop-filter:blur(8px);clip-path:var(--cut-s)}
+/* ---- okna a oznámení: dialog s bronzovým rámem a pergamenovým textem ---- */
+.mback{background:rgba(6,5,4,.82)}
+.mcard{background:linear-gradient(180deg,#2a251d,#16130f);border:1px solid var(--line2);border-radius:10px;box-shadow:0 40px 90px #000,var(--frame)}
+.toast{background:rgba(32,27,21,.96);border:1px solid var(--line2);border-radius:6px;backdrop-filter:blur(8px)}
 
 /* ---- mobil: úpravy, které nesmí přebít původní responzivitu ---- */
 @media(max-width:980px){
