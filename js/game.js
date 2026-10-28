@@ -1573,14 +1573,14 @@ function draw(){
       `<div class="crgo">${btn("Vstoupit na cestu","G.begin()")}</div></div></div></div>`); return; }
   if(!S && BOOT){ app.innerHTML = `<div class="hero"><h1>Cesta Meče a Sakury</h1><div class="sub">武士道</div><p class="mut">Načítám tvou postavu…</p></div>`; return; }
   if(!S){ closeModal();
-    app.innerHTML = deco(`<div class="hero"><div class="hero-wrap"><div class="hero-bg">${art(262)}</div><div class="petals">${Array.from({length:9},(_,i)=>`<i class="petal" style="left:${6+i*11}%;animation-delay:${(i*.9).toFixed(1)}s;animation-duration:${(9+(i%4)*1.6).toFixed(1)}s"></i>`).join("")}</div><div class="hero-in"><h1>Cesta Meče a Sakury</h1><div class="sub">武士道</div><div class="namebox"><input id="nm" placeholder="Jméno bojovníka" maxlength="20" value="${NM.replace(/"/g,"&quot;")}"></div><div class="cgrid">`+
-      Object.entries(CLASSES).map(([k,c])=>`<div class="cc"><div class="hanko">${SPRITE[k]}</div><h3>${c.n}</h3><p>${c.d}</p><p class="st">Síla ${c.s.str} · Obratnost ${c.s.dex} · Duch ${c.s.spi}</p>${btn("Zvolit cestu",`G.create('${k}')`)}</div>`).join("")+`</div>`+
+    app.innerHTML = deco(`<div class="hero"><div class="hero-wrap"><div class="hero-bg">${art(262)}</div><div class="petals">${Array.from({length:9},(_,i)=>`<i class="petal" style="left:${6+i*11}%;animation-delay:${(i*.9).toFixed(1)}s;animation-duration:${(9+(i%4)*1.6).toFixed(1)}s"></i>`).join("")}</div><div class="hero-in"><h1>Cesta Meče a Sakury</h1><div class="sub">武士道</div>${ornament()}<div class="namebox"><input id="nm" placeholder="Jméno bojovníka" maxlength="20" value="${NM.replace(/"/g,"&quot;")}"></div><div class="cgrid">`+
+      Object.entries(CLASSES).map(([k,c])=>`<div class="cc">${crest(k)}<h3>${c.n}</h3><p>${c.d}</p><p class="st">Síla ${c.s.str} · Obratnost ${c.s.dex} · Duch ${c.s.spi}</p>${btn("Zvolit cestu",`G.create('${k}')`)}</div>`).join("")+`</div>`+
       `<details class="impbox"><summary>Mám zálohu postavy</summary><textarea id="impc" class="code" rows="4" placeholder="Sem vlož kód začínající SAKURA1:"></textarea><div class="macts">${btn("Načíst zálohu","G.importCode()")}</div></details></div></div></div>`); return; }
   regen();
   if(MENU.city.some(m=>m[0]===tab)) grp = "city"; if(MENU.wild.some(m=>m[0]===tab)) grp = "wild";
   const mi = ([k,g,n]) => `<button class="mi ${k===tab||(k==="char"&&tab==="look")?"on":""}" onclick="G.tab('${k}')"><span class="mk">${gl(g)}</span>${n}</button>`;
   const en = enter; enter = false;
-  app.innerHTML = deco(`<div class="shell"><aside class="side"><div class="brand"><div class="hanko sm">桜</div><div><b>Cesta Meče</b><span>a Sakury</span></div></div>
+  app.innerHTML = deco(`<div class="shell"><aside class="side"><div class="brand">${logoMark()}<div><b>Cesta Meče</b><span>a Sakury</span></div></div>
     <button class="me" onclick="G.tab('look')" aria-label="Podoba a rod"><div class="ava${frc()}">${myPortrait()}</div><div><b>${S.name}</b><span>${race()?race().n+" · ":""}${CLASSES[S.cls].n} · level ${S.lvl}</span></div></button>
     <nav class="menu">${MENU.top.map(mi).join("")}<div class="seg"><button class="${grp==="city"?"on":""}" onclick="G.grp('city')">Město</button><button class="${grp==="wild"?"on":""}" onclick="G.grp('wild')">Divočina</button></div>${MENU[grp].map(mi).join("")}</nav></aside>
     <main class="main">${hudbar()}${strip()}<section class="page ${en?"enter":""}">${VIEWS[tab]()}</section><section class="log" id="log">${deco(logText)}</section></main></div>${bnav()}`);
