@@ -1,0 +1,4 @@
+# Lokální skilly nainstalované přes npx skills (nepatří do repozitáře)
+.agents/
+.claude/
+skills-lock.json
