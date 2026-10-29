@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="RPG MMO avatar icon">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#2b1d5c"/>
+      <stop offset="60%" stop-color="#140d33"/>
+      <stop offset="100%" stop-color="#07051a"/>
+    </radialGradient>
+    <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffe29a"/>
+      <stop offset="45%" stop-color="#c58a2b"/>
+      <stop offset="100%" stop-color="#6b3f12"/>
+    </linearGradient>
+    <linearGradient id="cloak" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3d2a7a"/>
+      <stop offset="100%" stop-color="#170f3a"/>
+    </linearGradient>
+    <linearGradient id="blade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7ef3ff"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#4fb8ff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7ef3ff" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#7ef3ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="circle">
+      <circle cx="128" cy="128" r="112"/>
+    </clipPath>
+  </defs>
+
+  <!-- Outer ornate frame -->
+  <circle cx="128" cy="128" r="124" fill="url(#frame)"/>
+  <circle cx="128" cy="128" r="116" fill="#0a0820"/>
+
+  <!-- Background -->
+  <g clip-path="url(#circle)">
+    <rect x="0" y="0" width="256" height="256" fill="url(#bg)"/>
+    <!-- Light rays -->
+    <g fill="#7ef3ff" opacity="0.07">
+      <polygon points="128,128 100,0 156,0"/>
+      <polygon points="128,128 200,20 256,60"/>
+      <polygon points="128,128 256,128 256,160"/>
+      <polygon points="128,128 0,128 0,160"/>
+      <polygon points="128,128 56,20 0,60"/>
+    </g>
+    <!-- Rune ring -->
+    <circle cx="128" cy="128" r="96" fill="none" stroke="#c58a2b" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.7"/>
+    <circle cx="128" cy="128" r="84" fill="none" stroke="#7ef3ff" stroke-width="1" opacity="0.35"/>
+    <g fill="#ffe29a" opacity="0.8">
+      <rect x="125" y="22" width="6" height="6" transform="rotate(45 128 25)"/>
+      <rect x="125" y="224" width="6" height="6" transform="rotate(45 128 227)"/>
+      <rect x="22" y="125" width="6" height="6" transform="rotate(45 25 128)"/>
+      <rect x="224" y="125" width="6" height="6" transform="rotate(45 227 128)"/>
+    </g>
+    <!-- Aura behind hero -->
+    <circle cx="128" cy="118" r="72" fill="url(#glow)" opacity="0.5"/>
+
+    <!-- Cloak -->
+    <path d="M58 236 Q52 170 80 146 L128 128 L176 146 Q204 170 198 236 Z" fill="url(#cloak)"/>
+    <path d="M80 146 L128 128 L176 146 L150 170 L128 158 L106 170 Z" fill="#241a4f" opacity="0.8"/>
+
+    <!-- Pauldrons -->
+    <path d="M70 160 Q62 140 84 136 L100 150 Q86 166 70 160 Z" fill="#c58a2b"/>
+    <path d="M186 160 Q194 140 172 136 L156 150 Q170 166 186 160 Z" fill="#c58a2b"/>
+
+    <!-- Head & hood -->
+    <path d="M90 118 Q90 66 128 58 Q166 66 166 118 Q166 146 128 150 Q90 146 90 118 Z" fill="#1c1446"/>
+    <path d="M96 118 Q96 74 128 66 Q160 74 160 118 Q160 136 128 140 Q96 136 96 118 Z" fill="#2e2170"/>
+    <!-- Glowing eyes -->
+    <ellipse cx="114" cy="112" rx="5" ry="3.5" fill="#7ef3ff" filter="url(#soft)"/>
+    <ellipse cx="142" cy="112" rx="5" ry="3.5" fill="#7ef3ff" filter="url(#soft)"/>
+    <!-- Hood rim -->
+    <path d="M90 118 Q128 46 166 118" fill="none" stroke="#c58a2b" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Sword held up -->
+    <g filter="url(#soft)">
+      <path d="M176 188 L212 26 L218 26 L184 192 Z" fill="url(#blade)"/>
+    </g>
+    <path d="M168 186 L196 176 L202 184 L176 196 Z" fill="#c58a2b"/>
+    <rect x="178" y="194" width="8" height="26" rx="2" fill="#4a2a0c" transform="rotate(-25 182 207)"/>
+    <circle cx="176" cy="226" r="5" fill="#ffe29a"/>
+
+    <!-- Shield emblem bottom-left -->
+    <path d="M52 178 L80 170 L80 206 Q80 224 66 232 Q52 224 52 206 Z" fill="#1d3d8c" stroke="#ffe29a" stroke-width="3"/>
+    <path d="M66 182 L66 222" stroke="#ffe29a" stroke-width="3"/>
+    <path d="M56 194 L76 194" stroke="#ffe29a" stroke-width="3"/>
+  </g>
+
+  <!-- Gloss highlight -->
+  <path d="M40 90 A100 100 0 0 1 120 28" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.18"/>
+</svg>
